@@ -1,0 +1,28 @@
+spring:
+  cloud:
+    config:
+      #uri: http://127.0.0.1:7788/  #配置中心的地址
+      name: service-zuul
+      profile: dev #对应配置服务中的{profile}
+      label: master #对应的分支
+      discovery:
+        enabled: true
+        service-id: microservice-config-server
+  rabbitmq:
+    host: 192.168.3.11
+    port: 5673
+    username: guest
+    password: guest
+###服务注册到eureka注册中心的地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://hkp:123456@127.0.0.1:8100/eureka
+    ###因为该应用为服务提供者，是eureka的一个客户端，需要注册到注册中心
+    register-with-eureka: true
+    ###是否需要从eureka上检索服务
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true  #将自己的ip地址注册到eureka中
+    ip-address: 127.0.0.1
+    instance-id: ${spring.application.name}###${server.port}  #指定实例id
