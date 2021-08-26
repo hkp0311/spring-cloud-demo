@@ -16,13 +16,21 @@ public class SwaggerConfig {
     @Bean
     public Docket createRestApi() {
         //配置swagger 生成API的扫描范围
-        return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).select().apis(RequestHandlerSelectors.basePackage("com.micro.item")).paths(PathSelectors.any()).build();
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .select().apis(RequestHandlerSelectors.basePackage("com.micro.item"))
+                .paths(PathSelectors.any()).build();
     }
     /**
      * 创建api文档信息
      * @return
      */
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("鹏哥的专栏").description("SpringCloud教程").termsOfServiceUrl("https://www.baidu.com").version("1.0").build();
+        return new ApiInfoBuilder()
+                .title("鹏哥的专栏")
+                .description("SpringCloud教程")
+                .termsOfServiceUrl("https://www.baidu.com")
+                .version("1.0")
+                .build();
     }
 }
